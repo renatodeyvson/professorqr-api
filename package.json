@@ -1,0 +1,26 @@
+{
+  "name": "professorqr-api",
+  "version": "1.0.0",
+  "description": "API do Professor Que Responde (@professorqrbot)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renatodeyvson/professorqr-api.git"
+  },
+  "keywords": [
+    "chatbot"
+  ],
+  "author": "renatodeyvson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renatodeyvson/professorqr-api/issues"
+  },
+  "homepage": "https://github.com/renatodeyvson/professorqr-api#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "node-telegram-bot-api": "^0.30.0"
+  }
+}
