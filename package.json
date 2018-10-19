@@ -21,6 +21,7 @@
   "homepage": "https://github.com/renatodeyvson/professorqr-api#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "mongodb": "^3.1.8",
     "node-telegram-bot-api": "^0.30.0"
   }
 }

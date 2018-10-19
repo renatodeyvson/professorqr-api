@@ -1,22 +1,13 @@
 'use strict';
 
-const TelegramBot = require('node-telegram-bot-api');
-let config = {};
+module.exports = (TelegramBot) => {
 
-try{
-    config = require('../internal-config');
-} catch(err) {
-    config.token = '<PUT YOUR TOKEN HERE OR CREATE A internal-config.js FILE>';
-}
-
-const token = config.token;
-const bot = new TelegramBot(token, {polling: true});
-
-module.exports = () => {
+    const token = process.env.BOT_TOKEN || '<PUT YOUR TOKEN HERE>';
+    const bot = new TelegramBot(token, {polling: true});
 
     bot.onText(/\/start/, (msg) => {
 
-        bot.sendMessage(msg.chat.id, 'Bem vindo! Eu sou o Professor Que Responde. No momento eu não tenho nenhum material que possa te ajudar, entre em contato diretamente com seu professor. :(');
+        bot.sendMessage(msg.chat.id, 'Bem vindo! Eu sou o Professor Que Responde. No momento eu não tenho nenhum material que possa te ajudar. Entre em contato diretamente com seu professor. :(');
             
     });
     
