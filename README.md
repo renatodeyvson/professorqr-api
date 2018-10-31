@@ -8,6 +8,7 @@ Install dependencies
 ```
 Start server
 ```sh
+> cd src
 > node server
 ```
 
