@@ -1,8 +1,13 @@
 'use strict';
 
+const doc = require('./controllers/docController');
+
 module.exports = (app) => {
 
-    //test
-    app.get('/', (req, res) => res.send('OK.'));
+    const docRoute = 'docs';
+    app.get('/'+docRoute+'/:classroom', doc.getAllByClassroom);
+    app.post('/'+docRoute, doc.insert);
+    app.delete('/'+docRoute, doc.delete);
+    app.put('/'+docRoute, doc.update);
 
 };

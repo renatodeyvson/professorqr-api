@@ -1,17 +1,12 @@
 'use strict';
 
-module.exports = (MongoClient) => {
-    
-    const url = 'mongodb://localhost:27017';
-    const dbName = 'professorqrdb';
-    const client = new MongoClient(url, { useNewUrlParser: true });
+const mongoose = require('mongoose');
 
-    client.connect((err) => {
-        console.log('[db] on %s', url);
+let db = mongoose.connection;
 
-        const db = client.db(dbName);
+db.on('error', console.error);
+db.once('open', () => {
+    console.log('[db] on');
+});
 
-        client.close();
-    });
-
-};
+mongoose.connect('mongodb://localhost:27017/professorqrdb', { useNewUrlParser: true });
