@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "9df98bce-1369-46ff-8f24-09149397a9c3",
+		"name": "pqr",
+		"description": "tg",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "docs",
+			"item": [
+				{
+					"name": "get all by classroom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/docs/renatoclass",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"docs",
+								"renatoclass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert doc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"título ^^\",\n\t\"url\": \"essa/é/a/url\",\n\t\"tags\": \"coisa1;coisa2;coisa3;\",\n\t\"classroom\": \"renatoclass\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/docs",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete doc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"título ^^\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/docs",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update doc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"old_title\": \"título ^^\",\n    \"title\": \"TÍTULO NOVO!\",\n    \"url\": \"url nova\",\n    \"tags\": \"tags;novas\",\n    \"classroom\": \"renatoclass\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/docs",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"docs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "classrooms",
+			"item": [
+				{
+					"name": "get by password",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/classrooms/password",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"classrooms",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert classroom",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"name\",\n    \"code\": \"code\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/classrooms",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"classrooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete classroom",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/classrooms",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"classrooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update classroom",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"old_password\": \"password\",\n\t\"name\": \"new name\",\n    \"code\": \"new code\",\n    \"password\": \"new password\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/classrooms",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"classrooms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
