@@ -235,6 +235,121 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "students",
+			"item": [
+				{
+					"name": "get all by classroom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/students/renatoclass",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students",
+								"renatoclass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"renatinho\",\n\t\"classroom\": \"renatoclass\",\n\t\"password\": \"123\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/students",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete student",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"123\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/students",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"old_password\": \"123\",\n\t\"name\": \"renatão\",\n    \"classroom\": \"renatoclass\",\n    \"password\": \"123456\",\n    \"absences\": 0,\n    \"notes\": [{\n    \t\"evaluation_name\": \"TG\",\n    \t\"value\": 5\n    }]\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/students",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

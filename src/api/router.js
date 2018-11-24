@@ -2,6 +2,7 @@
 
 const doc = require('./controllers/docController');
 const classroom = require('./controllers/classroomController');
+const student = require('./controllers/studentController');
 
 module.exports = (app) => {
 
@@ -16,5 +17,11 @@ module.exports = (app) => {
     app.post('/'+classroomRoute, classroom.insert);
     app.delete('/'+classroomRoute, classroom.delete);
     app.put('/'+classroomRoute, classroom.update);
+
+    const studentRoute = 'students';
+    app.get('/'+studentRoute+'/:classroom', student.getAllByClassroom);
+    app.post('/'+studentRoute, student.insert);
+    app.delete('/'+studentRoute, student.delete);
+    app.put('/'+studentRoute, student.update);
 
 };
