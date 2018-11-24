@@ -7,6 +7,12 @@ exports.insert = (req, res) => {
     const classroom = req.body.classroom;
     const activities = req.body.activities;
 
+    const newSchedule = insertSchedule(classroom, activities);
+
+    res.send(newSchedule);
+};
+
+const insertSchedule = (classroom, activities) => {
     const newSchedule = new schedule({
         classroom: classroom,
         activities: activities
@@ -14,30 +20,45 @@ exports.insert = (req, res) => {
 
     newSchedule.save();
 
-    res.send(newSchedule);
+    return newSchedule;
 };
+exports.insertSchedule = insertSchedule;
 
 //get all schedules of a classroom
 exports.getAllByClassroom = (req, res) => {
     const classroom = req.params.classroom;
 
-    schedule.find({ classroom: classroom }, (err, data) => {
-        if (err) return res.send(err);
-
+    getAllSchedulesByClassroomPromise(classroom).then((data) => {
         res.send(data);
     });
 };
+
+const getAllSchedulesByClassroomPromise = (classroom) => {
+    return schedule.find({ classroom: classroom }, (err, data) => {
+        if (err) return err;
+
+        return data;
+    });
+};
+exports.getAllSchedulesByClassroomPromise = getAllSchedulesByClassroomPromise;
 
 //delete schedule
 exports.delete = (req, res) => {
     const classroom = req.body.classroom;
 
-    schedule.deleteOne({ classroom: classroom }, (err) => {
-        if (err) return res.send(err);
-
-        res.send({ message: 'sucess' });
+    deleteSchedulePromise(classroom).then((data) => {
+        res.send(data);
     });
 };
+
+const deleteSchedulePromise = (classroom) => {
+    return schedule.deleteOne({ classroom: classroom }, (err) => {
+        if (err) return err;
+
+        return { message: 'sucess' };
+    });
+};
+exports.deleteSchedulePromise = deleteSchedulePromise;
 
 //update schedule
 exports.update = (req, res) => {
@@ -45,12 +66,19 @@ exports.update = (req, res) => {
     const classroom = req.body.classroom;
     const activities = req.body.activities;
 
-    schedule.updateOne({ classroom: old_classroom }, {
+    updateSchedulePromise(old_classroom, classroom, activities).then((data) => {
+        res.send(data);
+    });
+};
+
+const updateSchedulePromise = (old_classroom, classroom, activities) => {
+    return schedule.updateOne({ classroom: old_classroom }, {
         classroom: classroom,
         activities: activities
     }, (err, updateRes) => {
-        if (err) return res.send(err);
+        if (err) return err;
 
-        res.send(updateRes);
+        return updateRes;
     });
 };
+exports.updateSchedulePromise = updateSchedulePromise;

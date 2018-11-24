@@ -219,7 +219,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"old_password\": \"password\",\n\t\"name\": \"new name\",\n    \"code\": \"new code\",\n    \"password\": \"new password\"\n}"
+							"raw": "{\n\t\"old_password\": \"password\",\n\t\"name\": \"new name\",\n    \"code\": \"new code\",\n    \"password\": \"password\"\n}"
 						},
 						"url": {
 							"raw": "localhost:3000/classrooms",
@@ -257,6 +257,30 @@
 							"path": [
 								"students",
 								"renatoclass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by password",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/students/me/123456",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students",
+								"me",
+								"123456"
 							]
 						}
 					},

@@ -9,6 +9,12 @@ exports.insert = (req, res) => {
     const tags = req.body.tags.split(';');
     const classroom = req.body.classroom;
 
+    const newDoc = insertDoc(title, url, tags, classroom);
+
+    res.send(newDoc);
+};
+
+const insertDoc = (title, url, tags, classroom) => {
     const newDoc = new doc({
         title: title,
         url: url,
@@ -18,30 +24,45 @@ exports.insert = (req, res) => {
 
     newDoc.save();
 
-    res.send(newDoc);
+    return newDoc;
 };
+exports.insertDoc = insertDoc;
 
 //get all docs
 exports.getAllByClassroom = (req, res) => {
     const classroom = req.params.classroom;
 
-    doc.find({ classroom: classroom }, (err, data) => {
-        if (err) return res.send(err);
-
+    getAllDocsByClassroomPromise(classroom).then((data) => {
         res.send(data);
     });
 };
+
+const getAllDocsByClassroomPromise = (classroom) => {
+    return doc.find({ classroom: classroom }, (err, data) => {
+        if (err) return err;
+
+        return data;
+    });
+};
+exports.getAllDocsByClassroomPromise = getAllDocsByClassroomPromise;
 
 //delete doc
 exports.delete = (req, res) => {
     const title = req.body.title;
 
-    doc.deleteOne({ title: title }, (err) => {
-        if (err) return res.send(err);
-
-        res.send({ message: 'sucess' });
+    deleteDocPromise(title).then((data) => {
+        res.send(data);
     });
 };
+
+const deleteDocPromise = (title) => {
+    return doc.deleteOne({ title: title }, (err) => {
+        if (err) return err;
+
+        return { message: 'sucess' };
+    });
+};
+exports.deleteDocPromise = deleteDocPromise;
 
 //update doc
 exports.update = (req, res) => {
@@ -51,14 +72,21 @@ exports.update = (req, res) => {
     const tags = req.body.tags.split(';');
     const classroom = req.body.classroom;
 
-    doc.updateOne({ title: old_title }, {
+    updateDocPromise(old_title, title, url, tags, classroom).then((data) => {
+        res.send(data);
+    });
+};
+
+const updateDocPromise = (old_title, title, url, tags, classroom) => {
+    return doc.updateOne({ title: old_title }, {
         title: title,
         url: url,
         tags: tags,
         classroom: classroom
     }, (err, updateRes) => {
-        if (err) return res.send(err);
+        if (err) return err;
 
-        res.send(updateRes);
+        return updateRes;
     });
 };
+exports.updateDocPromise = updateDocPromise;

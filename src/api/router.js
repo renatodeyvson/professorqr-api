@@ -21,6 +21,7 @@ module.exports = (app) => {
 
     const studentRoute = 'students';
     app.get('/'+studentRoute+'/:classroom', student.getAllByClassroom);
+    app.get('/'+studentRoute+'/me/:password', student.getByPassword);
     app.post('/'+studentRoute, student.insert);
     app.delete('/'+studentRoute, student.delete);
     app.put('/'+studentRoute, student.update);

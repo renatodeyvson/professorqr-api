@@ -8,6 +8,12 @@ exports.insert = (req, res) => {
     const code = req.body.code;
     const password = req.body.password;
 
+    const newClassroom = insertClassroom(name, code, password);
+
+    res.send(newClassroom);
+};
+
+const insertClassroom = (name, code, password) => {
     const newClassroom = new classroom({
         name: name,
         code: code,
@@ -16,34 +22,49 @@ exports.insert = (req, res) => {
 
     newClassroom.save();
 
-    res.send(newClassroom);
+    return newClassroom;
 };
+exports.insertClassroom = insertClassroom;
 
 //get a classroom by password
 exports.getByPassword = (req, res) => {
     const password = req.params.password;
 
-    classroom.find({ password: password }, (err, data) => {
-        if (err) return res.send(err);
+    getClassroomByPasswordPromise(password).then((data) => {
+        res.send(data);
+    });
+};
+
+const getClassroomByPasswordPromise = (password) => {
+    return classroom.find({ password: password }, (err, data) => {
+        if (err) return err;
 
         for(let i=0; i<data.length; ++i){
             data[i].password = undefined;
         }
 
-        res.send(data);
+        return data;
     });
 };
+exports.getClassroomByPasswordPromise = getClassroomByPasswordPromise;
 
 //delete classroom
 exports.delete = (req, res) => {
     const password = req.body.password;
 
-    classroom.deleteOne({ password: password }, (err) => {
-        if (err) return res.send(err);
-
-        res.send({ message: 'sucess' });
+    deleteClassroomPromise(password).then((data) => {
+        res.send(data);
     });
 };
+
+const deleteClassroomPromise = (password) => {
+    return classroom.deleteOne({ password: password }, (err) => {
+        if (err) return err;
+
+        return { message: 'sucess' };
+    });
+};
+exports.deleteClassroomPromise = deleteClassroomPromise;
 
 //update classroom
 exports.update = (req, res) => {
@@ -52,13 +73,20 @@ exports.update = (req, res) => {
     const code = req.body.code;
     const password = req.body.password;
 
-    classroom.updateOne({ password: old_password }, {
+    updateClassroomPromise(old_password, name, code, password).then((data) => {
+        res.send(data);
+    });
+};
+
+const updateClassroomPromise = (old_password, name, code, password) => {
+    return classroom.updateOne({ password: old_password }, {
         name: name,
         code: code,
         password: password
     }, (err, updateRes) => {
-        if (err) return res.send(err);
+        if (err) return err;
 
-        res.send(updateRes);
+        return updateRes;
     });
 };
+exports.updateClassroomPromise = updateClassroomPromise;
