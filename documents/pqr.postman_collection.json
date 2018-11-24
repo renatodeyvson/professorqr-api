@@ -350,6 +350,121 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "schedule",
+			"item": [
+				{
+					"name": "get all by classroom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/schedules/renatoclass",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"schedules",
+								"renatoclass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert schedule",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"classroom\": \"renatoclass\",\n\t\"activities\": [{\n\t\t\"date\": \"2018-11-23\",\n\t\t\"description\": \"Fazer o TG\"\n\t}, {\n\t\t\"date\": \"2018-11-24\",\n\t\t\"description\": \"Entregar o TG\"\n\t}]\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/schedules",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete schedule",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"classroom\": \"renatoclass\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/schedules",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update schedule",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"old_classroom\": \"renatoclass\",\n\t\"classroom\": \"renatoclass\",\n\t\"activities\": [{\n\t\t\"date\": \"2018-11-23\",\n\t\t\"description\": \"Já ter terminado o TG\"\n\t}, {\n\t\t\"date\": \"2018-11-24\",\n\t\t\"description\": \"Nova chance de fazer o TG\"\n\t}]\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/schedules",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
