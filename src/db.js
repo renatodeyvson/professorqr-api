@@ -9,4 +9,4 @@ db.once('open', () => {
     console.log('[db] on');
 });
 
-mongoose.connect('mongodb://localhost:27017/professorqrdb', { useNewUrlParser: true });
+mongoose.connect('mongodb://professorqruser:123456aA@ds213832.mlab.com:13832/professorqrdb', { useNewUrlParser: true });

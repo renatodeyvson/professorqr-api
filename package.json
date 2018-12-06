@@ -24,5 +24,8 @@
     "express": "^4.16.4",
     "mongoose": "^5.3.7",
     "node-telegram-bot-api": "^0.30.0"
+  },
+  "engines": {
+    "node": "8.12.0"
   }
 }

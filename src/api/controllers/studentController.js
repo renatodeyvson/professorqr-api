@@ -17,7 +17,8 @@ const insertStudent = (name, classroom, password) => {
     const newStudent = new student({
         name: name,
         classroom: classroom,
-        password: password
+        password: password,
+        absences: 0
     });
 
     newStudent.save();
