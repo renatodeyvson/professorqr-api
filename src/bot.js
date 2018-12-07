@@ -7,7 +7,7 @@ const schedule = require('./api/controllers/scheduleController');
 
 module.exports = (TelegramBot) => {
 
-    const token = process.env.BOT_TOKEN || '<PUT YOUR TOKEN HERE>';
+    const token = process.env.BOT_TOKEN || '639722122:AAGJK_ZpfUZWhWqpSCktTM9X8gGLNN9V9o8';
     const bot = new TelegramBot(token, {polling: true});
 
     bot.onText(/\/start/, (msg) => {
